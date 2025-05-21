@@ -2,11 +2,8 @@ import React from "react";
 
 type Variant = "primary" | "danger" | "default";
 
-interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
-  disabled?: boolean;
 }
 
 const variantClasses: Record<Variant, string> = {
@@ -16,25 +13,25 @@ const variantClasses: Record<Variant, string> = {
 };
 
 const Button: React.FC<ButtonProps> = ({
-  onClick,
   children,
   variant = "default",
-  disabled = false,
-}) => {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={`
-        px-4 py-2 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
-        ${variantClasses[variant]}
-        ${disabled ? "opacity-50 cursor-not-allowed" : ""}
-      `}
-    >
-      {children}
-    </button>
-  );
-};
+  disabled,
+  className = "",
+  ...rest
+}) => (
+  <button
+    type="button"
+    disabled={disabled}
+    className={`
+      px-4 py-2 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2
+      ${variantClasses[variant]}
+      ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+      ${className}
+    `}
+    {...rest}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

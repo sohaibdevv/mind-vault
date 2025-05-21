@@ -1,5 +1,5 @@
- import React from 'react';
-import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
 interface LengthSettingProps {
   title: string;
@@ -20,19 +20,11 @@ const LengthSetting: React.FC<LengthSettingProps> = ({
     <div className="flex flex-col items-center">
       <h2 className="text-lg font-semibold">{title}</h2>
       <div className="flex items-center space-x-4">
-        <Button
-          onClick={onDecrease}
-          variant="default"
-          disabled={isDisabled}
-        >
+        <Button onClick={onDecrease} variant="default" disabled={isDisabled}>
           Decrease
         </Button>
         <span className="text-xl">{length}</span>
-        <Button
-          onClick={onIncrease}
-          variant="default"
-          disabled={ isDisabled}
-        >
+        <Button onClick={onIncrease} variant="default" disabled={isDisabled}>
           Increase
         </Button>
       </div>

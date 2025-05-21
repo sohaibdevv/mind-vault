@@ -16,26 +16,22 @@ const Controls: React.FC<ControlsProps> = ({
   isRunning,
   onStartPause,
   onReset,
-}) => {
-  return (
-    <div className="flex justify-center space-x-4">
-      <Button
-        onClick={onStartPause}
-        variant="primary"
-        disabled={false}
-      >
-        {isRunning ? "Pause" : "Start"}
-      </Button>
-      <Button
-        onClick={onReset}
-        variant="danger"
-        disabled={false}
-      >
-        Reset
-      </Button>
-    </div>
-  );
-};
+}) => (
+  <div className="flex justify-center space-x-4">
+    <Button
+      onClick={onStartPause}
+      variant="primary"
+    >
+      {isRunning ? "Pause" : "Start"}
+    </Button>
+    <Button
+      onClick={onReset}
+      variant="danger"
+    >
+      Reset
+    </Button>
+  </div>
+);
 
 export default Controls;
 // This component can be used in any part of your Next.js application.
